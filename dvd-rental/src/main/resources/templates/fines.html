@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Denda Rental</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Springboot DVDRental</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dvds"><i class="fas fa-film"></i> DVD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/members"><i class="fas fa-users"></i> Anggota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/fines"><i class="fas fa-money-bill-wave"></i> Denda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rent"><i class="fas fa-shopping-cart"></i> Rental</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cog"></i> Tambah
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dvds/add">Tambah DVD</a>
+                        <a class="dropdown-item" href="/members/add">Tambah Anggota</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Dashboard Denda Rental DVD</h1>
+        <a href="/fines/add" class="btn btn-primary mb-3">Tambah Denda</a>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>ID Rental</th>
+                        <th>Jumlah Denda</th>
+                        <th>Alasan</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="fine : ${fines}">
+                        <td th:text="${fine.id}"></td>
+                        <td th:text="${fine.rentalId}"></td>
+                        <td th:text="${fine.amount}"></td>
+                        <td th:text="${fine.reason}"></td>
+                        <td>
+                            <a th:href="@{/fines/edit(id=${fine.id})}" class="btn btn-warning btn-sm">Edit</a>
+                            <a th:href="@{/fines/delete(id=${fine.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin hapus dengan?');">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

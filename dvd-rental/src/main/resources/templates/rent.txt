@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Springboot Rental DVD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Rental CD/DVD</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dvds"><i class="fas fa-film"></i> DVD</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/members"><i class="fas fa-users"></i> Anggota</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/fines"><i class="fas fa-money-bill-wave"></i> Denda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/rent"><i class="fas fa-shopping-cart"></i> Sewa/Rental</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-cog"></i> Tambah
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/dvds/add">Tambah DVD</a>
+                        <a class="dropdown-item" href="/members/add">Tambah Anggota</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Manage Rentals</h1>
+
+        <!-- Button to Add New Rental -->
+        <a href="/rentals/add" class="btn btn-primary mb-4">Tambah</a>
+
+        <!-- Table to Display Existing Rentals -->
+        <h2>Current Rentals</h2>
+        <div class="table-responsive">
+            <table class="table table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th>Member ID</th>
+                        <th>DVD ID</th>
+                        <th>Rental Date</th>
+                        <th>Return Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="rental : ${rentals}">
+                        <td th:text="${rental.id}"></td>
+                        <td th:text="${rental.memberId}"></td>
+                        <td th:text="${rental.dvdId}"></td>
+                        <td th:text="${#dates.format(rental.rentalDate, 'yyyy-MM-dd')}"></td>
+                        <td th:text="${#dates.format(rental.returnDate, 'yyyy-MM-dd')}"></td>
+                        <td>
+                            <a th:href="@{/rentals/edit(id=${rental.id})}" class="btn btn-warning btn-sm">Edit</a>
+                            <a th:href="@{/rentals/delete(id=${rental.id})}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this rental?');">Delete</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Footer -->
+
+    <footer class="bg-light text-center text-lg-start mt-5">
+        <div class="text-center p-3">
+            © 2025 Springboot Rental CD/DVD. All rights reserved.
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

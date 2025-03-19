@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add DVD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Tambah DVD</h1>
+
+        <!-- Form to Add a New DVD -->
+        <form action="/dvds/add" method="post">
+            <div class="form-group">
+                <label for="title">Judul:</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="form-group">
+                <label for="director">Sutradara:</label>
+                <input type="text" class="form-control" id="director" name="director" required>
+            </div>
+            <div class="form-group">
+                <label for="releaseDate">Tanggal Rilis:</label>
+                <input type="date" class="form-control" id="releaseDate" name="releaseDate" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">DVD Baru:</label>
+                <select class="form-control" id="is_new" name="is_new" required>
+                    <option value="" disabled selected></option>
+                    <option value="0">Baru</option>
+                    <option value="1">Lama</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="genre">Genre:</label>
+                <input type="text" class="form-control" id="genre" name="genre" required>
+            </div>
+            <div class="form-group">
+                <label for="rating">Rating:</label>
+                <input type="text" class="form-control" id="rating" name="rating" required>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block">Tambah DVD</button>
+        </form>
+        <a href="/dvds" class="btn btn-secondary btn-block mt-3">Kembali</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

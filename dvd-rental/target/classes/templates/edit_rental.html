@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Rental CD/DVD</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Edit Rental</h1>
+        <!-- Form to Edit Rental -->
+        <form action="/rentals/edit" method="post">
+            <input type="hidden" name="id" value="${rental.id}">
+            <div class="form-group">
+                <label for="memberId">Member ID:</label>
+                <input type="number" class="form-control" id="memberId" name="memberId" value="${rental.memberId}" required>
+            </div>
+            <div class="form-group">
+                <label for="dvdId">DVD ID:</label>
+                <input type="number" class="form-control" id="dvdId" name="dvdId" value="${rental.dvdId}" required>
+            </div>
+            <div class="form-group">
+                <label for="rentalDate">Rental Date:</label>
+                <input type="date" class="form-control" id="rentalDate" name="rentalDate" value="${rental.rentalDate}" required>
+            </div>
+            <div class="form-group">
+                <label for="returnDate">Return Date:</label>
+                <input type="date" class="form-control" id="returnDate" name="returnDate" value="${rental.returnDate}">
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Rental</button>
+        </form>
+        <a href="/rentals" class="btn btn-secondary btn-block mt-3">Back to Rentals List</a>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

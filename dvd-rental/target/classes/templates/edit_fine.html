@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Fine</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Edit Denda</h1>
+
+        <!-- Form to Edit Fine -->
+        <form action="/fines/edit" method="post">
+            <input type="hidden" name="fineId" th:value="${fine.id}"/> <!-- Hidden field for fine ID -->
+            <div class="form-group">
+                <label for="amount">Jumlah Denda:</label>
+                <input type="number" class="form-control" id="amount" name="amount" th:value="${fine.amount}" required>
+            </div>
+            <div class="form-group">
+                <label for="rentalId">ID Rental:</label>
+                <input type="number" class="form-control" id="rentalId" name="rentalId" th:value="${fine.rentalId}" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Alasan:</label>
+                <select class="form-control" id="reason" name="reason" required>
+                    <option th:each="reason : ${T(com.java.dvd_rental.Entity.Fine.FineReason).values()}" 
+                            th:value="${reason.name()}" 
+                            th:text="${reason.displayName}" 
+                            th:selected="${fine.reason.name() == reason.name()}"></option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Update Denda</button>
+        </form>
+
+        <a href="/fines" class="btn btn-secondary btn-block mt-3">Kembali</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

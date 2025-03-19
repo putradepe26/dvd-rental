@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Denda</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container mt-5">
+        <h1 class="text-center">Data Denda Rental DVD</h1>
+
+        <!-- Form to Add a New Fine -->
+        <form action="/fines/add" method="post">
+            <div class="form-group">
+                <label for="amount">Jumlah:</label>
+                <input type="number" class="form-control" id="amount" name="amount" required>
+            </div>
+            <div class="form-group">
+                <label for="rentalId">ID Rental:</label>
+                <input type="number" class="form-control" id="rentalId" name="rentalId" required>
+            </div>
+            <div class="form-group">
+                <label for="reason">Alasan</label>
+                <select class="form-control" id="reason" name="reason" required>
+                    <option value="" disabled selected></option>
+                    <option value="LATE_RETURN">Terlambat</option>
+                    <option value="DAMAGED">Rusak Ringan</option>
+                    <option value="LOST">Rusak Berat/Hilang</option>
+                    <option value="OTHER">Lain-lain</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Tambah Denda</button>
+        </form>
+
+        <a href="/fines" class="btn btn-secondary btn-block mt-3">Kembali</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

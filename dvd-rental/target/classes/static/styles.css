@@ -1,0 +1,26 @@
+body 
+{
+    background-color: #f8f9fa; /* Light background color */
+    font-family: Arial, sans-serif; /* Font style */
+}
+
+h1 
+{
+    color: #343a40; /* Dark color for headings */
+    margin-bottom: 20px; /* Space below headings */
+}
+
+.container 
+{
+    margin-top: 50px; /* Space above the container */
+}
+
+.table 
+{
+    margin-top: 20px; /* Space above the table */
+}
+
+.btn 
+{
+    margin-top: 10px; /* Space above buttons */
+}
